@@ -34,6 +34,7 @@
 		<members>SQX_Bulk_Job_Manager__c.SQX_Records_Failed__c</members>
 		<members>SQX_Bulk_Job_Manager__c.SQX_Records_Processed__c</members>
 		<members>SQX_Bulk_Job_Manager__c.SQX_Records_Success__c</members>
+		<members>SQX_Bulk_Job_Manager__c.SQX_Track_Job_Status_Real_Time__c</members>
 		<members>SQX_Part__c.SQX_Active__c</members>
 		<members>SQX_Part__c.SQX_Part_Number__c</members>
 		<members>SQX_Part__c.SQX_Related_Account__c</members>
