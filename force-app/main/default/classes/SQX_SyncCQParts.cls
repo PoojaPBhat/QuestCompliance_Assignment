@@ -12,7 +12,6 @@ public with Sharing class SQX_SyncCQParts {
      * Description: To insert/update Parts Details from External System based of Part Id
      *              a. If ‘Total Quantity Shipped' from callout response < 99, then get account with name = 'High Volume',
      *              b. If ‘Total Quantity Shipped' from callout response >= 99, get account with name = 'Low Volume'
-
      */
     @AuraEnabled
     public static String createCQParts() {
