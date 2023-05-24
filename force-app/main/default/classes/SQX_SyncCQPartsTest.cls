@@ -23,7 +23,7 @@ public class SQX_SyncCQPartsTest {
         String message = SQX_SyncCQParts.createCQParts();
         Assert.areEqual('Sync was successful.', message);
         Test.stopTest();
-        System.debug(message);
+        // System.debug(message);
     }
 
     @isTest
@@ -46,7 +46,7 @@ public class SQX_SyncCQPartsTest {
         Test.startTest();
         System.runAs(user1) {
             String message = SQX_SyncCQParts.createCQParts();
-            System.debug(message);
+            // System.debug(message);
             Assert.areNotEqual('Sync was successful.', message);
             Assert.areEqual('You dont have required permission to sync the QC Parts.', message);
             Test.stopTest();
@@ -74,7 +74,7 @@ public class SQX_SyncCQPartsTest {
         Test.startTest();
         System.runAs(user1) {
             String message = SQX_SyncCQParts.createCQParts();
-            System.debug(message);
+            // System.debug(message);
             Assert.areEqual('Sync was successful.', message);
             Assert.areNotEqual('You dont have required permission to sync the QC Parts.', message);
             Test.stopTest();

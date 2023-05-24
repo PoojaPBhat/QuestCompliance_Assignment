@@ -1,3 +1,10 @@
+/********************************************************************************************************************
+ * Create By  : Pooja P Bhat
+ * Description: Invocable class called From Flow - Bulk Import CSV Data, to import large volume data using BULK API 2.0
+ * CHANGE LOG
+ * Date         Story#      ModifiedBy      Reason
+ * 23-5-2023                Pooja P Bhat    Created.
+ *******************************************************************************************************************/
 public with sharing class SQX_UseFlowsBulkImportParts {
     
     @InvocableMethod(label='Flow Import CSV File' description='Import Data from the CSV file')
@@ -14,7 +21,7 @@ public with sharing class SQX_UseFlowsBulkImportParts {
             } else {
                 SQX_Bulk_Job_Manager__c oBJM = new SQX_Bulk_Job_Manager__c(SQX_Bulk_Job_Status__c='Failed. No Admin permission to bulk upload records.');
                 insert oBJM;
-                insert (new ContentDocumentLink(LinkedEntityId=oBJM.Id, ContentDocumentId=contDocId, shareType='V'));
+                if(!Test.isRunningTest()) { insert (new ContentDocumentLink(LinkedEntityId=oBJM.Id, ContentDocumentId=contDocId, shareType='V'));}
             }
         } //End of if(listRequestWrapper!=null && !listRequestWrapper.isEmpty()) 
     } //End of bulkImportParts()

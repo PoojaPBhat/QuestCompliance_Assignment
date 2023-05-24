@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>SQX_BatchCreateCSVFailedImport</members>
+		<members>SQX_BatchCreateCSVFailedImportTest</members>
+		<members>SQX_BulkAPI2Utility</members>
+		<members>SQX_BulkAPI2UtilityMock</members>
+		<members>SQX_BulkJobManagerStatusSync</members>
+		<members>SQX_BulkJobManagerStatusSyncTest</members>
 		<members>SQX_CQPartsParser</members>
 		<members>SQX_ConstantsUtility</members>
 		<members>SQX_RestCallouts</members>
@@ -8,19 +14,34 @@
 		<members>SQX_RestMockCallouts</members>
 		<members>SQX_SyncCQParts</members>
 		<members>SQX_SyncCQPartsTest</members>
+		<members>SQX_UseFlowsBulkImportParts</members>
+		<members>SQX_UseFlowsBulkImportPartsTest</members>
 		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>CQPartTrigger</members>
+		<name>ApexTrigger</name>
 	</types>
 	<types>
 		<members>SQX</members>
 		<name>CustomApplication</name>
 	</types>
 	<types>
+		<members>SQX_Bulk_Job_Manager__c.SQX_Bulk_Job_Id__c</members>
+		<members>SQX_Bulk_Job_Manager__c.SQX_Bulk_Job_Status__c</members>
+		<members>SQX_Bulk_Job_Manager__c.SQX_Closed__c</members>
+		<members>SQX_Bulk_Job_Manager__c.SQX_Error_Message__c</members>
+		<members>SQX_Bulk_Job_Manager__c.SQX_Records_Failed__c</members>
+		<members>SQX_Bulk_Job_Manager__c.SQX_Records_Processed__c</members>
+		<members>SQX_Bulk_Job_Manager__c.SQX_Records_Success__c</members>
 		<members>SQX_Part__c.SQX_Active__c</members>
 		<members>SQX_Part__c.SQX_Part_Number__c</members>
 		<members>SQX_Part__c.SQX_Related_Account__c</members>
+		<members>SQX_Part__c.SQX_Total_Quantity_Shipped__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
+		<members>SQX_Bulk_Job_Manager__c</members>
 		<members>SQX_Part__c</members>
 		<name>CustomObject</name>
 	</types>
@@ -29,12 +50,27 @@
 		<name>CustomPermission</name>
 	</types>
 	<types>
+		<members>SQX_Bulk_Job_Manager__c</members>
 		<members>SQX_Part__c</members>
 		<name>CustomTab</name>
 	</types>
 	<types>
+		<members>Public/eTADRCBnOaEbsxVwWTsXIFWAqBAPfU</members>
+		<name>Dashboard</name>
+	</types>
+	<types>
+		<members>SQX_Bulk_Job_Manager_Flexi_Page</members>
 		<members>SQX_Home_Page</members>
 		<name>FlexiPage</name>
+	</types>
+	<types>
+		<members>SQX_Flow_Bulk_Import_CSV_Data</members>
+		<name>Flow</name>
+	</types>
+	<types>
+		<members>SQX_Bulk_Job_Manager__c-Bulk Job Manager Layout</members>
+		<members>SQX_Part__c-CQ Part Layout</members>
+		<name>Layout</name>
 	</types>
 	<types>
 		<members>sqxSyncQCPartsLWC</members>
@@ -48,6 +84,17 @@
 	<types>
 		<members>SQX_REST_Callout</members>
 		<name>RemoteSiteSetting</name>
+	</types>
+	<types>
+		<members>unfiled$public/Bulk_Jobs_Manager_Summary_Report_yFk</members>
+		<members>unfiled$public/CQ_Parts_Report_By_Related_Acc_H1i</members>
+		<members>unfiled$public/CQ_Parts_Report_Weekly_Sync_Updates_M17</members>
+		<members>unfiled$public/New_Bulk_Jobs_Manager_Report_416</members>
+		<name>Report</name>
+	</types>
+	<types>
+		<members>SQX_Bulk_Job_Manager__c.Import_Data</members>
+		<name>WebLink</name>
 	</types>
 	<version>55.0</version>
 </Package>

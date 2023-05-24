@@ -6,6 +6,30 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>SQX_BatchCreateCSVFailedImport</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SQX_BatchCreateCSVFailedImportTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SQX_BulkAPI2Utility</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SQX_BulkAPI2UtilityMock</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SQX_BulkJobManagerStatusSync</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SQX_BulkJobManagerStatusSyncTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SQX_CQPartsParser</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -33,11 +57,54 @@
         <apexClass>SQX_SyncCQPartsTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>SQX_UseFlowsBulkImportParts</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SQX_UseFlowsBulkImportPartsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <custom>false</custom>
     <customPermissions>
         <enabled>true</enabled>
         <name>Integration_Admin</name>
     </customPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SQX_Bulk_Job_Manager__c.SQX_Bulk_Job_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SQX_Bulk_Job_Manager__c.SQX_Bulk_Job_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SQX_Bulk_Job_Manager__c.SQX_Closed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SQX_Bulk_Job_Manager__c.SQX_Error_Message__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SQX_Bulk_Job_Manager__c.SQX_Records_Failed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SQX_Bulk_Job_Manager__c.SQX_Records_Processed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SQX_Bulk_Job_Manager__c.SQX_Records_Success__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>SQX_Part__c.SQX_Active__c</field>
@@ -53,6 +120,17 @@
         <field>SQX_Part__c.SQX_Related_Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SQX_Part__c.SQX_Total_Quantity_Shipped__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <layoutAssignments>
+        <layout>SQX_Bulk_Job_Manager__c-Bulk Job Manager Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>SQX_Part__c-CQ Part Layout</layout>
+    </layoutAssignments>
     <loginIpRanges>
         <endAddress>255.255.255.255</endAddress>
         <startAddress>0.0.0.0</startAddress>
@@ -63,9 +141,22 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
+        <object>SQX_Bulk_Job_Manager__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
         <object>SQX_Part__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
+    <tabVisibilities>
+        <tab>SQX_Bulk_Job_Manager__c</tab>
+        <visibility>DefaultOff</visibility>
+    </tabVisibilities>
     <tabVisibilities>
         <tab>SQX_Part__c</tab>
         <visibility>DefaultOn</visibility>

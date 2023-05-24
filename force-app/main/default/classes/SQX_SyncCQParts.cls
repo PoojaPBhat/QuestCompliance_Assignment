@@ -28,10 +28,10 @@ public with Sharing class SQX_SyncCQParts {
                     for(Account oAcc : lAccounts) {
                         mAccounts.put(oAcc.Name,oAcc);
                     }
-                    System.debug('mAccounts==='+mAccounts.size()+' '+mAccounts);
+                    // System.debug('mAccounts==='+mAccounts.size()+' '+mAccounts);
                     
                     for(SQX_CQPartsParser oParts : lst_CQParts) {
-                        System.debug('oParts==='+oParts);
+                        // System.debug('oParts==='+oParts);
                         if(String.isNotBlank(oParts.partId) && String.isNotBlank(oParts.partName) && oParts.totalQuantityShipped!=null) {
                             SQX_Part__c oQcPart = new SQX_Part__c(Name=oParts.partName,SQX_Part_Number__c=oParts.partId);
                             if(!mAccounts.isEmpty() && mAccounts.containsKey(SQX_ConstantsUtility.LOW_VOLUME) && mAccounts.containsKey(SQX_ConstantsUtility.HIGH_VOLUME)) {

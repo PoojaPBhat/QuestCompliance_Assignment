@@ -1,3 +1,10 @@
+/********************************************************************************************************************
+ * Create By  : Pooja P Bhat
+ * Description: Utility class to Bulk Import Large Volume Data using Bulk API 2.0
+ * CHANGE LOG
+ * Date         Story#      ModifiedBy      Reason
+ * 23-5-2023                Pooja P Bhat    Created.
+ *******************************************************************************************************************/
 public class SQX_BulkAPI2Utility {
     
     //Reference Link: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/walkthrough_upsert.htm
@@ -5,7 +12,7 @@ public class SQX_BulkAPI2Utility {
     public static void createBulkJob(String contDocId, String objName, String externalIdFieldApiName, String contentType, String operation, String lineEnding) {
         // Step 1: Getting the file from Content Version
         ContentVersion oCV = [SELECT Id, ContentDocumentId, VersionData FROM ContentVersion WHERE ContentDocumentId =: contDocId ];
-        System.debug('oCV*** ' + oCV);
+        // System.debug('oCV*** ' + oCV);
         // Step 2: Creating JOB
         Http oHttpJob = new Http();
         HttpRequest jobReq = new HttpRequest();
@@ -21,10 +28,10 @@ public class SQX_BulkAPI2Utility {
                             '"lineEnding":"'+ lineEnding + '"' +
                         '}';
         jobReq.setBody(body);
-        System.debug('body***'+body);
-        System.debug('job req body***'+jobReq.getBody());
+        // System.debug('body***'+body);
+        // System.debug('job req body***'+jobReq.getBody());
         HttpResponse jobResp = oHttpJob.send(jobReq);
-        System.debug('jobResp.getBody()***'+ jobResp.getBody());
+        // System.debug('jobResp.getBody()***'+ jobResp.getBody());
         if(jobResp.getStatusCode() <= 299 && jobResp.getBody() != null) {
             Map<String, Object> respMap = (Map<String, Object>) JSON.deserializeUntyped(jobResp.getBody());
             String jobId = (String)respMap.get('id');
@@ -36,7 +43,7 @@ public class SQX_BulkAPI2Utility {
             batchReq.setHeader('content-type', 'text/csv' );
             batchReq.setHeader('Authorization' ,'Bearer '+userInfo.getSessionId() );  
             batchReq.setBody(oCV.VersionData.toString());
-            System.debug('job req body***'+batchReq.getBody());
+            // System.debug('job req body***'+batchReq.getBody());
             HttpResponse batchResp = oHttpBatch.send(batchReq);
             if(batchResp.getStatusCode() <= 299) {
                 // Step 4: After submitting data, tell Salesforce servers that the job is ready for processing by closing the job.
@@ -48,7 +55,7 @@ public class SQX_BulkAPI2Utility {
                 closeReq.setHeader('Authorization' ,'Bearer '+userInfo.getSessionId() );  
                 closeReq.setBody('{"state":"UploadComplete"}');
                 HttpResponse closeResp = oHttpJobClose.send(closeReq);
-                System.debug('close resp body***'+closeResp.getBody());
+                // System.debug('close resp body***'+closeResp.getBody());
                 //Step 5: Getting the Job Info
                 Http oHttpJobInfo = new Http();
                 HttpRequest jobInfoReq = new HttpRequest();
@@ -58,11 +65,11 @@ public class SQX_BulkAPI2Utility {
                 jobInfoReq.setHeader('Authorization' ,'Bearer '+userInfo.getSessionId());
                 HttpResponse jobInfoResp = oHttpJobInfo.send(jobInfoReq);
                 if(jobInfoResp.getStatusCode() <= 299 && jobInfoResp.getBody() != null) {
-                    System.debug('jobInfoResp body***'+jobInfoResp.getBody());
+                    // System.debug('jobInfoResp body***'+jobInfoResp.getBody());
                     Map<String, Object> jobInfoRespMap = (Map<String, Object>) JSON.deserializeUntyped(jobInfoResp.getBody());
-                    Integer totalRecords=   (Integer)jobInfoRespMap.get('numberRecordsProcessed');
-                    Integer recordFailed=   (Integer)jobInfoRespMap.get('numberRecordsFailed');
-                    String state        =   (String)jobInfoRespMap.get('state');
+                    Integer totalRecords=   Integer.valueOf(jobInfoRespMap.containsKey('numberRecordsProcessed') ? jobInfoRespMap.get('numberRecordsProcessed') : 0);
+                    Integer recordFailed=   Integer.valueOf(jobInfoRespMap.containsKey('numberRecordsFailed') ? jobInfoRespMap.get('numberRecordsFailed') : 0);
+                    String state        =   String.valueOf(jobInfoRespMap.containsKey('state') ? jobInfoRespMap.get('state') : '');
                     Integer recrdSuccess=   totalRecords - recordFailed;
                     //Step 5: Updating Job status in Bulk Job Manager
                     SQX_Bulk_Job_Manager__c oBJM = new SQX_Bulk_Job_Manager__c(

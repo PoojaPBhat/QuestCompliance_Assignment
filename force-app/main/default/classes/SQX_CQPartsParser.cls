@@ -23,7 +23,7 @@ public class SQX_CQPartsParser {
 					} else if (text == 'Total Quantity Shipped') {
 						totalQuantityShipped = parser.getIntegerValue();
 					} else {
-						System.debug(LoggingLevel.WARN, 'JSON2Apex consuming unrecognized property: '+text);
+						// System.debug(LoggingLevel.WARN, 'JSON2Apex consuming unrecognized property: '+text);
 						consumeObject(parser);
 					}
 				}
